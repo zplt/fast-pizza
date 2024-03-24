@@ -7,6 +7,8 @@ import Order, {loader as orderLoader} from "./features/order/Order.jsx";
 import AppLayout from "./ui/AppLayout.jsx";
 import Error from "./ui/Error.jsx";
 
+
+
 const router = createBrowserRouter([
     {
         element: <AppLayout/>,
