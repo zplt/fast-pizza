@@ -9,6 +9,7 @@ import {getOrder} from "../../services/apiRestaurant.js";
 import {useFetcher, useLoaderData} from "react-router-dom";
 import OrderItem from "./OrderItem.jsx";
 import {useEffect} from "react";
+import UpdateOrder from "./UpdateOrder.jsx";
 
 function Order() {
     const order = useLoaderData();
@@ -19,7 +20,6 @@ function Order() {
         if (!fetcher.data && fetcher.state === 'idle') fetcher.load('/menu')
     }, [fetcher]);
 
-    console.log(fetcher.data)
     // Everyone can search for all orders, so for privacy reasons we're gonna exclude names or address, these are only for the restaurant staff
     const {
         id,
@@ -70,6 +70,8 @@ function Order() {
                 <p className={'font-medium text-stone-600'}>To pay on
                     delivery: {formatCurrency(orderPrice + priorityPrice)}</p>
             </div>
+
+            {!priority && <UpdateOrder order={order}/>}
         </div>
     );
 }
